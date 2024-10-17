@@ -67,6 +67,30 @@
     
     
     
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const password = document.getElementById('password');
+        const confirmPassword = document.getElementById('confirmPassword');
+        const createAccountButton = document.querySelector('button[type="submit"]');
     
+        function checkPasswords() {
+          if (password.value !== confirmPassword.value) {
+            password.classList.add('error');
+            confirmPassword.classList.add('error');
+          } else {
+            password.classList.remove('error');
+            confirmPassword.classList.remove('error');
+          }
+        }
+        password.addEventListener('input', checkPasswords);
+    confirmPassword.addEventListener('input', checkPasswords);
+    createAccountButton.addEventListener('click', function(event) {
+      if (password.value !== confirmPassword.value) {
+        event.preventDefault();
+        alert('Passwords do not match!');
+      }
+    });
+  }); 
+  </script>
   </body>
 </html>
